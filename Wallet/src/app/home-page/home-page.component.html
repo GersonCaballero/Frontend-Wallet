@@ -1,0 +1,67 @@
+<div class="col">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Wallet</a>
+    <img src="../../assets/img/Wallet.png" style="width:50px; height:40px;">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Cerrar Sesión</button>
+      </form>
+    </div>
+  </nav>
+</div>
+
+<div id="Etiquetas">
+  <div class="row">
+    <div class="col-3">
+      <h3>Transacciones:</h3>
+      <div id="list-example" class="list-group">
+        <a class="list-group-item list-group-item-action" routerLink = "/Ingreso">
+          <h3>Ingresos</h3>
+        </a>
+        <a class="list-group-item list-group-item-action" routerLink = "/Egreso">
+          <h3>Egresos</h3>
+        </a>
+        <a class="list-group-item list-group-item-action" routerLink = "/Traslado">
+          <h3>Traslados</h3>
+        </a>
+        <br>
+        <h3>Administración</h3>
+        <a class="list-group-item list-group-item-action" routerLink = "/Perfil">
+          <h3>Perfil</h3>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-9">
+      <h3 id="EtiquetaCuentas">Cuentas:</h3>
+      <div class="row">
+
+        <div class="col-" *ngFor = "let cuenta of cuentas"> 
+          <div class="container">
+            <div class="card" style="width: 18rem; margin:2em; margin-top:10px;">
+              <div class="card-body" style="margin-top: 10px;">
+                <h3 class="card-title">{{cuenta.Nombre}}</h3>
+                <a href="#" class="btn btn-primary" routerLink = "/Cuenta/{{cuenta.CuentaId}}">Inpeccionar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-">
+          <div class="container">
+            <div class="card" style="width: 18rem; margin:2em; margin-top:10px;">
+              <div class="card-body" style="margin-top: 10px;">
+                  <a id="btnmas" class="btn btn-outline-info my-2 my-sm-0" routerLink = "/CrearCuenta"><img id="mas" src="../../assets/img/plus.png"></a>  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="col">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Wallet</a>
+    <img src="../../assets/img/Wallet.png" style="width:50px; height:40px;">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Cerrar Sesión</button>
+      </form>
+    </div>
+  </nav>
+</div>
+
+<div class="row">
+  <div class="col-3">
+    <h3>Opciones</h3>
+    <br>
+    <div class="list-group">
+      <a id="opciones" class="list-group-item list-group-item-action" href="#list-item-1">
+        <h3>Menú Principal</h3>
+      </a>
+      <a id="opciones" class="list-group-item list-group-item-action" href="#list-item-1">
+        <h3>Editar perfil</h3>
+      </a>
+    </div>
+  </div>
+
+  <div class="col-8">
+    <ul class="list-group list-group-horizontal-sm">
+      <li class="list-group-item">
+        <img src="../../assets/img/iconperfil.jpg">
+      </li>
+      <li class="list-group-item">
+        <h1>{{perfil.Name}}</h1>
+      </li>
+    </ul>
+    <h4>Correo electrónico</h4>
+    <h5>{{perfil.Email}}</h5>
+  </div>
+</div>

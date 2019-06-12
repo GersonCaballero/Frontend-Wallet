@@ -1,0 +1,75 @@
+<div class="col">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Wallet</a>
+    <img src="../../assets/img/Wallet.png" style="width:50px; height:40px;">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Cerrar Sesión</button>
+      </form>
+    </div>
+  </nav>
+</div>
+
+<div class="row">
+  <div class="col-3">
+    <h3>Opciones</h3>
+    <br>
+    <div class="list-group">
+      <a id="opciones" class="list-group-item list-group-item-action" href="#list-item-1">
+        <h3>Menú Principal</h3>
+      </a>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <ul class="list-group list-group-horizontal-sm">
+      <li class="list-group-item">
+        <button id="CuentaTitulo" type="button" class="list-group-item list-group-item-action active" disabled>
+          <h4>Seleccione la cuenta que envia</h4>
+        </button>
+        <div id="CuentaName" class="list-group" *ngFor = "let cuentaE of cuentasE">
+          <button id="{{cuentaE.CuentaId}}e" type="button" class="list-group-item list-group-item-action"
+            (click)="onClickEnvia(cuentaE);">{{cuentaE.Nombre}}</button>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <button id="CuentaTitulo" type="button" class="list-group-item list-group-item-action active" disabled>
+          <h4>Seleccione la cuenta que recibe</h4>
+        </button>
+        <div id="CuentaName" class="list-group" *ngFor = "let cuentaR of cuentasR">
+          <button id="{{cuentaR.CuentaId}}r" type="button" class="list-group-item list-group-item-action"
+            (click)="onClickRecibe(cuentaR);">{{cuentaR.Nombre}}</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-5">
+      <h5>Descripción del egreso a la cuenta que envia</h5>
+      <input type="text" [(ngModel)]="Descripcion" class="form-control" value="Traslado de cuenta {{cuentasSeleccionadaE.Nombre}} a cuenta {{cuentasSeleccionadaR.Nombre}}." disabled>
+      <br>
+      <h5>Descripción del ingreso a la cuenta que recibe</h5>
+      <input type="text" class="form-control" value="Traslado de cuenta {{cuentasSeleccionadaE.Nombre}} a cuenta {{cuentasSeleccionadaR.Nombre}}." disabled>
+      <br>
+      <h5>Monto de su cuenta que envia</h5>
+      <input type="text" class="form-control" value="L.{{cuentasSeleccionadaE.Monto}}" disabled>
+      <br>
+      <h5>Monto de su cuenta que recibe</h5>
+      <input type="text" class="form-control" value="L.{{cuentasSeleccionadaR.Monto}}" disabled>
+      <br>
+      <h5>Fecha que se efectua el traslado</h5>
+      <input type="text" class="form-control" value="02/06/2019" disabled>
+      <br>
+      <h5>Monto que trasladara</h5>
+      <input [(ngModel)]="Monto" class="form-control" type="number">
+      <button id="btn" type="submit" class="btn btn-success" (click)="Guardar();">
+        <h4>Guardar</h4>
+      </button>
+      <button id="btn1" type="submit" class="btn btn-danger">
+        <h4>Cancelar</h4>
+      </button>
+  </div>
+</div>

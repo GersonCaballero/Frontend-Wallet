@@ -1,0 +1,46 @@
+<div class="col">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Wallet</a>
+    <img src="../../assets/img/Wallet.png" style="width:50px; height:40px;">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Cerrar Sesión</button>
+      </form>
+    </div>
+  </nav>
+</div>
+
+<div class="row">
+  <div class="col-3">
+    <h3>Opciones</h3>
+    <br>
+    <div class="list-group">
+      <a id="opciones" class="list-group-item list-group-item-action" href="#list-item-1">
+        <h3>Menú Principal</h3>
+      </a>
+    </div>
+  </div>
+
+  <div class="col-8">
+    <h3>Crear Cuenta</h3>
+    <button id="CuentaTitulo" type="button" class="list-group-item list-group-item-action active" disabled>
+      <h4>Seleccione tipo de cuenta</h4>
+    </button>
+    <div id="CuentaName" class="list-group" *ngFor = "let tipocuenta of tiposCuentas">
+      <button id="{{tipocuenta.TipoCuentaId}}" type="button" class="list-group-item list-group-item-action" (click)="onClick(tipocuenta);">{{tipocuenta.Nombre}}</button>
+    </div>
+    <div class="form-group">
+      <label for="">Nombre</label>
+      <input name="Name"[(ngModel)] = "NombreCuenta" type="Text" class="form-control">
+    </div>
+    <button id="btn" type="submit" class="btn btn-success" (click)="Guardar();">
+      <h4>Guardar</h4>
+    </button>
+    <button id="btn1" type="submit" class="btn btn-danger">
+      <h4>Cancelar</h4>
+    </button>
+  </div>
+</div>

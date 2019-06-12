@@ -1,0 +1,49 @@
+<div class="col">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Wallet</a>
+      <img src="../../assets/img/Wallet.png" style="width:50px; height:40px;">
+  
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Cerrar Sesión</button>
+        </form>
+      </div>
+    </nav>
+  </div>
+  
+  <div class="row">
+    <div class="col-3">
+      <h3>Opciones</h3>
+      <br>
+      <div class="list-group">
+        <a id="opciones" class="list-group-item list-group-item-action" href="#list-item-1">
+          <h3>Menú Principal</h3>
+        </a>
+        <a id="opciones" class="list-group-item list-group-item-action" href="#list-item-1">
+          <h3>Cambiar Contraseña</h3>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-8">
+      <img src="../../assets/img/iconperfil.jpg">
+      <h5>Nombre de usuario</h5>
+      <input type="text" class="form-control" value="{{perfil?.Name}}" disabled>
+      <br>
+      <h4>Correo electrónico</h4>
+      <input type="text" class="form-control" value="{{perfil?.Email}}" disabled>
+      <br>
+      <h4>Ingrese Contraseña Actual</h4>
+      <input type="password" [(ngModel)]="Password" class="form-control">
+      <br>
+      <h4>Ingrese Contraseña Nueva</h4>
+      <input type="password" [(ngModel)]="newPassword" class="form-control">
+      <br>
+      <h4>Confirme Contraseña Nueva</h4>
+      <input type="password" [(ngModel)]="confirmPassword" class="form-control">
+      <br>
+      <button type="submit" class="btn btn-success" (click)="Editar();">Guardar</button>
+    </div>
+  </div>

@@ -1,0 +1,46 @@
+<div class="col">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Wallet</a>
+    <img src="../../assets/img/Wallet.png" style="width:50px; height:40px;">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Cerrar Sesión</button>
+      </form>
+    </div>
+  </nav>
+</div>
+
+<div class="row">
+  <div class="col-3">
+    <h3>Opciones</h3>
+    <br>
+    <div class="list-group">
+      <a id="opciones" class="list-group-item list-group-item-action" href="#list-item-1">
+        <h3>Menú Principal</h3>
+      </a>
+      <a id="opciones" class="list-group-item list-group-item-action" href="#list-item-1">
+        <h3>Reporte de ingresos</h3>
+      </a>
+      <a id="opciones" class="list-group-item list-group-item-action" href="#list-item-1">
+        <h3>Reporte de egresos</h3>
+      </a>
+      <a id="opciones" class="list-group-item list-group-item-action" href="#list-item-1">
+        <h3>Gráficas ingresos mensuales</h3>
+      </a>
+      <a id="opciones" class="list-group-item list-group-item-action" href="#list-item-1">
+        <h3>Gráficas egresos mensuales</h3>
+      </a>
+    </div>
+  </div>
+
+  <div class="col-8">
+    <h3>Información de la cuenta</h3>
+    <h1>Nombre de la cuenta</h1>
+    <h2 id="ncuenta">{{cuenta.Nombre}}</h2>
+    <h1>Monto de la cuenta</h1>
+    <h2 id="cantidad">L.{{cuenta.Monto}}</h2>
+  </div>
+</div>
