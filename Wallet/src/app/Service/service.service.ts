@@ -79,9 +79,7 @@ export class ServiceService {
 
   postIngresos(Ingreso: Ingresos, accountId: number){
     var Token = localStorage.getItem("Token");
-    debugger
     var retorna = this.httpClient.post(`${this.baseUrl}Ingresos?accountId=${accountId}`, Ingreso, { headers: new HttpHeaders().set('Authorization', 'Bearer '+ Token)});
-    debugger
     return retorna;
   }
 

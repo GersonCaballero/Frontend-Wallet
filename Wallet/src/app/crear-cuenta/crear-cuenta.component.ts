@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Tipocuenta } from '../models/tipocuenta';
 import { ServiceService } from '../Service/service.service';
 import { Cuenta } from '../models/cuenta';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-cuenta',
@@ -14,9 +15,11 @@ export class CrearCuentaComponent implements OnInit {
   tipocuentaSeleccionada: Tipocuenta;
   seleccionado: string;
   NombreCuenta: string;
+  messages: string;
 
-  constructor(private service: ServiceService) { 
+  constructor(private service: ServiceService, private router: Router) { 
     this.service = service;
+    this.router = router;
   }
 
   ngOnInit() {
@@ -28,8 +31,10 @@ export class CrearCuentaComponent implements OnInit {
   }
 
   onClick(tipocuenta: Tipocuenta){
+    if(this.messages == "Seleccione una cuenta."){
+      this.messages = "";
+    };
     this.tipocuentaSeleccionada = tipocuenta;
-    debugger
     if(this.seleccionado != ""){
       var input = document.getElementById(this.seleccionado);
 
@@ -51,7 +56,9 @@ export class CrearCuentaComponent implements OnInit {
   }
 
   Guardar(){
-    debugger
+    if(this.tipocuentaSeleccionada === undefined){
+      this.messages = "Seleccione una cuenta.";
+    }
     var UserId = parseInt(localStorage.getItem("IdUser"));
     var cuenta = new Cuenta();
     cuenta.UserId = UserId;
@@ -66,7 +73,15 @@ export class CrearCuentaComponent implements OnInit {
     debugger
     this.service.postCuentas(cuenta)
     .subscribe((data: any)=>{
-      var message = data.message;
-    })
+      if(data.message != "Cuenta creada exitosamente."){
+        this.messages = data.message;
+        return;
+      }
+    
+      this.router.navigate(['Home']);
+    },
+    (error : any) => {
+      this.messages = error.status + '-' + error.statusText;
+    });
   }
 }

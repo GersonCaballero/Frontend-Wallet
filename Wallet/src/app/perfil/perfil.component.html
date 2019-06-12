@@ -7,7 +7,7 @@
       <ul class="navbar-nav mr-auto">
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Cerrar Sesión</button>
+        <button class="btn btn-outline-info my-2 my-sm-0" (click)="Logout();">Cerrar Sesión</button>
       </form>
     </div>
   </nav>
@@ -18,10 +18,10 @@
     <h3>Opciones</h3>
     <br>
     <div class="list-group">
-      <a id="opciones" class="list-group-item list-group-item-action" href="#list-item-1">
+      <a id="opciones" class="list-group-item list-group-item-action" routerLink="/Home">
         <h3>Menú Principal</h3>
       </a>
-      <a id="opciones" class="list-group-item list-group-item-action" href="#list-item-1">
+      <a id="opciones" class="list-group-item list-group-item-action" routerLink="/Perfil/EditarPerfil">
         <h3>Editar perfil</h3>
       </a>
     </div>
@@ -33,10 +33,10 @@
         <img src="../../assets/img/iconperfil.jpg">
       </li>
       <li class="list-group-item">
-        <h1>{{perfil.Name}}</h1>
+        <h1>{{perfil?.Name}}</h1>
       </li>
     </ul>
     <h4>Correo electrónico</h4>
-    <h5>{{perfil.Email}}</h5>
+    <h5>{{perfil?.Email}}</h5>
   </div>
 </div>

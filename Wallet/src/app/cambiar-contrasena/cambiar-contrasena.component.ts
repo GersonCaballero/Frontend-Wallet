@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
 import { ServiceService } from '../Service/service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cambiar-contrasena',
@@ -14,26 +15,30 @@ export class CambiarContrasenaComponent implements OnInit {
   newPassword: string;
   Password: string;
   confirmPassword: string;
+  messages: string;
 
-  constructor(private service: ServiceService) { 
+  constructor(private service: ServiceService, private router: Router) {
     this.service = service;
+    this.router = router;
   }
 
   ngOnInit() {
     this.Password = "";
     this.service.getUser(this.IdUser)
-    .subscribe((data: User)=>{
-      this.perfil = data;
-    });
+      .subscribe((data: User) => {
+        this.perfil = data;
+      });
   }
 
-  Editar(){
+  Editar() {
     debugger
-    if(this.perfil.Password != this.Password){
+    if (this.perfil.Password != this.Password) {
+      this.messages = "La contrasena actual es incorrecta.";
       return;
     }
 
-    if(this.newPassword != this.confirmPassword){
+    if (this.newPassword != this.confirmPassword) {
+      this.messages = "Las contrasenas no coinciden.";
       return;
     }
 
@@ -41,16 +46,29 @@ export class CambiarContrasenaComponent implements OnInit {
     user.UserId = this.IdUser;
     user.Name = this.perfil.Name;
     user.Email = this.perfil.Email;
-    user.Password =this.newPassword;
+    user.Password = this.newPassword;
     debugger
-    this.Enviar(user);  
+    this.Enviar(user);
   }
 
-  Enviar(user: User){
+  Enviar(user: User) {
     this.service.putUser(user, this.IdUser)
-    .subscribe((data: any)=>{
-      var message = data.message;
-    })
+      .subscribe((data: any) => {
+        if (data.message != "Usuario editado con exito.") {
+          this.messages = data.message;
+          return;
+        }
+
+        this.router.navigate(['Perfil']);
+      },
+        (error: any) => {
+          this.messages = error.status + '-' + error.statusText;
+        });
   }
 
+  Logout(){
+    localStorage.removeItem("Token");
+    localStorage.removeItem("UserId");
+    this.router.navigate(['login']);
+  }
 }

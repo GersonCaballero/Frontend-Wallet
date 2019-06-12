@@ -7,7 +7,7 @@
       <ul class="navbar-nav mr-auto">
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Cerrar Sesión</button>
+        <button class="btn btn-outline-info my-2 my-sm-0" (click)="Logout();">Cerrar Sesión</button>
       </form>
     </div>
   </nav>
@@ -18,8 +18,8 @@
     <h3>Opciones</h3>
     <br>
     <div class="list-group">
-      <a id="opciones" class="list-group-item list-group-item-action" href="#list-item-1">
-        <h3>Menú Principal</h3>
+      <a id="opciones" class="list-group-item list-group-item-action" routerLink="/Cuenta/{{id}}">
+        <h3>Cuenta</h3>
       </a>
     </div>
   </div>
@@ -28,8 +28,8 @@
     <div>
       <h1 id="ncuenta">Reporte de ingresos cuenta en Efectivo</h1>
     </div>
-    <div class="table table-dark">
-      <thead>
+    <div class="table">
+      <thead class="thead-dark">
         <tr>
           <th>Descripción</th>
           <th>Fecha</th>
@@ -39,12 +39,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Primer igreso a la cuenta</td>
-          <td>02/06/2019</td>
-          <td>L.00.0</td>
-          <td>L.500</td>
-          <td>L.500</td>
+        <tr *ngFor= "let ingreso of ingresos">
+          <td>{{ingreso.Descripcion}}</td>
+          <td>{{ingreso.Fecha | date:'dd/MM/yyyy'}}</td>
+          <td>L.{{ingreso.MontoActual}}</td>
+          <td>L.{{ingreso.Monto}}</td>
+          <td>L.{{ingreso.MontoActual+ingreso.Monto}}</td>
         </tr>
       </tbody>
     </div>

@@ -6,7 +6,7 @@
     <ul class="navbar-nav mr-auto">
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Registrarse</button>
+      <button class="btn btn-outline-info my-2 my-sm-0" type="submit" routerLink="/Registrar">Registrarse</button>
     </form>
   </div>
 </nav>
@@ -21,16 +21,7 @@
       <label for="exampleDropdownFormPassword1">Contraseña</label>
       <input name="Password" [(ngModel)]= "user.Password" type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
     </div>
-    <div class="form-group">
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="dropdownCheck">
-        <label class="form-check-label" for="dropdownCheck">
-          Recordar siempre
-        </label>
-      </div>
-    </div>
     <button type="submit" class="btn btn-outline-info">Iniciar Sesión</button>
   </form>
   <div class="dropdown-divider"></div>
-  <a class="dropdown-item" href="#">¿Olvidaste la contraseña?</a>
 </div>

@@ -18,10 +18,11 @@
     <h3>Opciones</h3>
     <br>
     <div class="list-group">
-      <a id="opciones" class="list-group-item list-group-item-action" href="#list-item-1">
-        <h3>Menú Principal</h3>
+      <a id="opciones" class="list-group-item list-group-item-action" routerLink="/Perfil">
+        <h3>Perfil</h3>
       </a>
-      <a id="opciones" class="list-group-item list-group-item-action" href="#list-item-1">
+      <a id="opciones" class="list-group-item list-group-item-action"
+        routerLink="/Perfil/EditarPerfil/EditarContrasena">
         <h3>Cambiar Contraseña</h3>
       </a>
     </div>
@@ -29,6 +30,11 @@
 
   <div class="col-8">
     <img src="../../assets/img/iconperfil.jpg">
+    <div *ngIf="messages" class="alert alert-danger" id="message">
+
+      <label>{{messages}}</label>
+
+    </div>
     <h5>Nombre de usuario</h5>
     <input type="text" [(ngModel)]="Name" class="form-control" value="{{perfil?.Name}}">
     <br>

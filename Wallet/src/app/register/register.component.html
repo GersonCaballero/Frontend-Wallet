@@ -6,33 +6,38 @@
     <ul class="navbar-nav mr-auto">
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Iniciar Sesión</button>
+      <button class="btn btn-outline-info my-2 my-sm-0" routerLink="/login">Iniciar Sesión</button>
     </form>
   </div>
 </nav>
 
 <div class="container">
   <form (ngSubmit)="Guardar(registerForm);" #registerForm="ngForm" class="px-4 py-5">
+    <div *ngIf="messages" class="alert alert-danger" id="message">
+      <li>{{messages}}</li>
+    </div>
     <div class="form-group">
       <label for="exampleDropdownFormEmail1">Nombre</label>
-      <input name="Name" [(ngModel)] = "user.Name" type="Text" class="form-control">
+      <input name="Name" [(ngModel)]="user.Name" type="Text" class="form-control">
     </div>
     <div class="dropdown-divider"></div>
     <div class="form-group">
       <label for="exampleDropdownFormEmail1">Email</label>
-      <input name="Email" [(ngModel)] = "user.Email" type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+      <input name="Email" [(ngModel)]="user.Email" type="email" class="form-control" id="exampleDropdownFormEmail1"
+        placeholder="email@example.com">
     </div>
     <div class="dropdown-divider"></div>
     <div class="form-group">
       <label for="exampleDropdownFormPassword1">Contraseña</label>
-      <input name = "Password" [(ngModel)] = "user.Password" type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+      <input name="Password" [(ngModel)]="user.Password" type="password" class="form-control"
+        id="exampleDropdownFormPassword1" placeholder="Password">
     </div>
     <div class="dropdown-divider"></div>
     <div class="form-group">
-        <label for="exampleDropdownFormPassword1"> Confirmar Contraseña</label>
-        <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Confirm Password">
-      </div>
-      <div class="dropdown-divider"></div>
+      <label for="exampleDropdownFormPassword1"> Confirmar Contraseña</label>
+      <input name="confirmcontrasena" [(ngModel)]="confirmcontrasena" type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Confirm Password">
+    </div>
+    <div class="dropdown-divider"></div>
     <button type="submit" class="btn btn-outline-info">Registrarse</button>
   </form>
   <div class="dropdown-divider"></div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../Service/service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Cuenta } from '../models/cuenta';
 
 @Component({
@@ -11,9 +11,10 @@ import { Cuenta } from '../models/cuenta';
 export class DetalleCuentaComponent implements OnInit {
 
   cuenta: Cuenta;
-  constructor(private service: ServiceService, private route: ActivatedRoute) { 
+  constructor(private service: ServiceService, private route: ActivatedRoute, private router: Router) { 
     this.service = service;
     this.route = route;
+    this.router = router;
   }
 
   ngOnInit() {
@@ -26,4 +27,9 @@ export class DetalleCuentaComponent implements OnInit {
     })
   }
 
+  Logout(){
+    localStorage.removeItem("Token");
+    localStorage.removeItem("UserId");
+    this.router.navigate(['login']);
+  }
 }

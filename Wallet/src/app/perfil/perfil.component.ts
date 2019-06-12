@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
 import { ServiceService } from '../Service/service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -10,7 +11,7 @@ import { ServiceService } from '../Service/service.service';
 export class PerfilComponent implements OnInit {
 
   perfil: User;
-  constructor(private service: ServiceService) {
+  constructor(private service: ServiceService, private router: Router) {
     this.service = service;
    }
 
@@ -20,6 +21,12 @@ export class PerfilComponent implements OnInit {
     .subscribe((data: User)=>{
       this.perfil = data;
     })
+  }
+
+  Logout(){
+    localStorage.removeItem("Token");
+    localStorage.removeItem("UserId");
+    this.router.navigate(['login']);
   }
 
 }

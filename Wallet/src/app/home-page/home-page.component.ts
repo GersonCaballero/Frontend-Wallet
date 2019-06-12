@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../Service/service.service';
 import { Cuenta } from '../models/cuenta';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -10,8 +11,9 @@ import { Cuenta } from '../models/cuenta';
 export class HomePageComponent implements OnInit {
 
   cuentas: Array<Cuenta>;
-  constructor(private service: ServiceService) { 
+  constructor(private service: ServiceService, private router: Router) { 
     this.service = service;
+    this.router = router;
   }
 
   ngOnInit() {
@@ -26,4 +28,9 @@ export class HomePageComponent implements OnInit {
       });
   }
 
+  Logout(){
+    localStorage.removeItem("Token");
+    localStorage.removeItem("UserId");
+    this.router.navigate(['login']);
+  }
 }

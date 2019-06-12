@@ -7,7 +7,7 @@
         <ul class="navbar-nav mr-auto">
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Cerrar Sesión</button>
+          <button class="btn btn-outline-info my-2 my-sm-0" (click)="Login();">Cerrar Sesión</button>
         </form>
       </div>
     </nav>
@@ -18,8 +18,8 @@
       <h3>Opciones</h3>
       <br>
       <div class="list-group">
-        <a id="opciones" class="list-group-item list-group-item-action" href="#list-item-1">
-          <h3>Menú Principal</h3>
+        <a id="opciones" class="list-group-item list-group-item-action" routerLink="/Cuenta/{{id}}">
+          <h3>Cuenta</h3>
         </a>
       </div>
     </div>
@@ -28,8 +28,8 @@
       <div>
         <h1 id="ncuenta">Reporte de egresos cuenta en Efectivo</h1>
       </div>
-      <div class="table table-dark">
-        <thead>
+      <div class="table">
+        <thead class="table-dark">
           <tr>
             <th>Descripción</th>
             <th>Fecha</th>
@@ -39,19 +39,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Primer egreso a la cuenta</td>
-            <td>02/06/2019</td>
-            <td>L.1000.0</td>
-            <td>L.500</td>
-            <td>L.500</td>
-          </tr>
-          <tr>
-            <td>Gasto semanla a la cuenta de efectivo, es lo que saco del cajero y con lo que pasare la semana.</td>
-            <td>02/06/2019</td>
-            <td>L.500.0</td>
-            <td>L.500.0</td>
-            <td>L.0.0</td>
+          <tr *ngFor= "let egreso of egresos">
+            <td>{{egreso.Descripcion}}</td>
+            <td>{{egreso.Fecha | date:'dd/MM/yyyy'}}</td>
+            <td>L.{{egreso.MontoActual}}</td>
+            <td>L.{{egreso.Monto}}</td>
+            <td>L.{{egreso.MontoActual-egreso.Monto}}</td>
           </tr>
         </tbody>
       </div>

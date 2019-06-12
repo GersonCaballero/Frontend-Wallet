@@ -18,7 +18,7 @@
     <h3>Opciones</h3>
     <br>
     <div class="list-group">
-      <a id="opciones" class="list-group-item list-group-item-action" href="#list-item-1">
+      <a id="opciones" class="list-group-item list-group-item-action" routerLink="/Home">
         <h3>Menú Principal</h3>
       </a>
     </div>
@@ -35,13 +35,18 @@
   </div>
 
   <div class="col-4">
+    <div *ngIf="messages" class="alert alert-danger" id="message">
+      
+        <label>{{messages}}</label>
+      
+    </div>
     <div>
       <h5>Descripción del egreso</h5>
       <textarea id="Descripcion" [(ngModel)]="Descripcion" type="text" class="form-control"></textarea>
       <br>
       <h5>Monto de su cuenta actual</h5>
       <input id="MontoActual" [(ngModel)]="MontoActual" type="text" class="form-control"
-        value={{cuentaSeleccionada.Monto}} disabled>
+        value={{cuentaSeleccionada?.Monto}} disabled>
       <br>
       <h5>Fecha que se efectua el egreso</h5>
       <input type="text" class="form-control" value="02/06/2019" disabled>

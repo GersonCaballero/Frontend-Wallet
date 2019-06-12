@@ -3,6 +3,7 @@ import { Cuenta } from '../models/cuenta';
 import { ServiceService } from '../Service/service.service';
 import { Ingresos } from '../models/ingresos';
 import { Egreso } from '../models/egreso';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-egresos',
@@ -16,9 +17,11 @@ export class EgresosComponent implements OnInit {
   cuentas: Array<Cuenta>;
   Descripcion : string;
   Monto: string;
+  messages: string;
   
-  constructor(private service: ServiceService) { 
+  constructor(private service: ServiceService, private router: Router) { 
     this.service = service;
+    this.router = router;
   }
 
   ngOnInit() {
@@ -35,6 +38,9 @@ export class EgresosComponent implements OnInit {
   }
 
   onClick(cuenta: Cuenta){
+    if(this.messages == "Seleccione una cuenta."){
+      this.messages = "";
+    };
     this.cuentaSeleccionada = cuenta;
     if(this.seleccionado != ""){
       var input = document.getElementById(this.seleccionado);
@@ -57,7 +63,9 @@ export class EgresosComponent implements OnInit {
   }
 
   botonSave(){
-    debugger
+    if(this.cuentaSeleccionada === undefined){
+      this.messages = "Seleccione una cuenta.";
+    }
     var egre = new Egreso();
     egre.CuentaId = this.cuentaSeleccionada.CuentaId;
     egre.Descripcion = this.Descripcion;
@@ -69,9 +77,17 @@ export class EgresosComponent implements OnInit {
   }
 
   Guardar(egreso: Egreso){
-    debugger
-    this.service.postEgresos(egreso, egreso.CuentaId).subscribe((data: any)=>{
-      debugger;
+    this.service.postEgresos(egreso, egreso.CuentaId)
+    .subscribe((data: any)=>{
+      if(data.message != "El Egreso se realizo con exito."){
+        this.messages = data.message;
+        return;
+      }
+    
+      this.router.navigate(['Home']);
+    },
+    (error : any) => {
+      this.messages = error.status + '-' + error.statusText;
     });
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../Service/service.service';
 import { Cuenta } from '../models/cuenta';
 import { Ingresos } from '../models/ingresos';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ingresos',
@@ -15,9 +16,11 @@ export class IngresosComponent implements OnInit {
   cuentas: Array<Cuenta>;
   Descripcion : string;
   Monto: string;
+  messages:string;
   
-  constructor(private service: ServiceService) { 
+  constructor(private service: ServiceService, private router: Router) { 
     this.service = service;
+    this.router = router;
   }
 
   
@@ -36,6 +39,10 @@ export class IngresosComponent implements OnInit {
   }
 
   onClick(cuenta: Cuenta){
+    
+    if(this.messages == "Seleccione una cuenta."){
+      this.messages = "";
+    }
     this.cuentaSeleccionada = cuenta;
     if(this.seleccionado != ""){
       var input = document.getElementById(this.seleccionado);
@@ -58,7 +65,9 @@ export class IngresosComponent implements OnInit {
   }
 
   botonSave(){
-    debugger
+    if(this.cuentaSeleccionada === undefined){
+      this.messages = "Seleccione una cuenta.";
+    }
     var ingre = new Ingresos();
     ingre.CuentaId = this.cuentaSeleccionada.CuentaId;
     ingre.Descripcion = this.Descripcion;
@@ -70,10 +79,23 @@ export class IngresosComponent implements OnInit {
   }
 
   Guardar(ingreso: Ingresos){
-    debugger
     this.service.postIngresos(ingreso, ingreso.CuentaId).subscribe((data: any)=>{
-      debugger;
+      if(data.message != "El ingreso se realizo con exito."){
+        this.messages = data.message;
+        return;
+      }
+    
+      this.router.navigate(['Home']);
+    },
+    (error : any) => {
+      this.messages = error.status + '-' + error.statusText;
     });
+  }
+
+  Logout(){
+    localStorage.removeItem("Token");
+    localStorage.removeItem("UserId");
+    this.router.navigate(['login']);
   }
 
 }
