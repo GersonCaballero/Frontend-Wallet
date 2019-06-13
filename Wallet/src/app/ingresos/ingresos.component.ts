@@ -67,6 +67,7 @@ export class IngresosComponent implements OnInit {
   botonSave(){
     if(this.cuentaSeleccionada === undefined){
       this.messages = "Seleccione una cuenta.";
+      return;
     }
     var ingre = new Ingresos();
     ingre.CuentaId = this.cuentaSeleccionada.CuentaId;

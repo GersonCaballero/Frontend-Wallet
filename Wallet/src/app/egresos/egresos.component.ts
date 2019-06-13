@@ -65,6 +65,7 @@ export class EgresosComponent implements OnInit {
   botonSave(){
     if(this.cuentaSeleccionada === undefined){
       this.messages = "Seleccione una cuenta.";
+      return;
     }
     var egre = new Egreso();
     egre.CuentaId = this.cuentaSeleccionada.CuentaId;

@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   user: UserLogin;
+  messages: string;
 
   constructor(private service: ServiceService, private route: Router) { 
     this.service = service;
@@ -36,6 +37,11 @@ export class LoginComponent implements OnInit {
   Login(form: NgForm){
     debugger
     this.service.postLogin(form.value).subscribe((data: any) =>{
+        
+      if(data.message === "Usuario o contrasena incorrectos."){
+        this.messages = data.message;
+        return;
+      }
       localStorage.setItem("Token", data.Token);
       localStorage.setItem("IdUser", data.IdUser);
       this.route.navigate(['Home']);

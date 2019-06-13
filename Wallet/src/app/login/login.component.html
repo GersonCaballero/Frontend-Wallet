@@ -12,14 +12,21 @@
 </nav>
 
 <div class="container">
+  <div *ngIf="messages" class="alert alert-danger" id="message">
+
+    <label>{{messages}}</label>
+
+  </div>
   <form (ngSubmit)="Login(loginForm);" #loginForm="ngForm" class="px-4 py-5">
     <div class="form-group">
       <label for="exampleDropdownFormEmail1">Email</label>
-      <input name="Username" [(ngModel)] = "user.Username" type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+      <input name="Username" [(ngModel)]="user.Username" type="email" class="form-control"
+        id="exampleDropdownFormEmail1" placeholder="email@example.com">
     </div>
     <div class="form-group">
       <label for="exampleDropdownFormPassword1">Contraseña</label>
-      <input name="Password" [(ngModel)]= "user.Password" type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+      <input name="Password" [(ngModel)]="user.Password" type="password" class="form-control"
+        id="exampleDropdownFormPassword1" placeholder="Password">
     </div>
     <button type="submit" class="btn btn-outline-info">Iniciar Sesión</button>
   </form>
