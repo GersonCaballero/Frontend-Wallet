@@ -30,7 +30,7 @@ export class ReporteIngresosComponent implements OnInit {
   Logout(){
     localStorage.removeItem("Token");
     localStorage.removeItem("UserId");
-    this.router.navigate(['login']);
+    this.router.navigate(['']);
   }
 
 }

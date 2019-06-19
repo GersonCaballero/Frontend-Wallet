@@ -18,7 +18,9 @@ import { ReporteEgresosComponent } from './reporte-egresos/reporte-egresos.compo
 import { HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
-import { CambiarContrasenaComponent } from './cambiar-contrasena/cambiar-contrasena.component'
+import { CambiarContrasenaComponent } from './cambiar-contrasena/cambiar-contrasena.component';
+import { GraficaComponent } from './grafica/grafica.component'
+import { ChartsModule } from 'ng2-charts/fesm5/ng2-charts';
 
 @NgModule({
   declarations: [
@@ -36,13 +38,15 @@ import { CambiarContrasenaComponent } from './cambiar-contrasena/cambiar-contras
     ReporteIngresosComponent,
     ReporteEgresosComponent,
     CrearCuentaComponent,
-    CambiarContrasenaComponent
+    CambiarContrasenaComponent,
+    GraficaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

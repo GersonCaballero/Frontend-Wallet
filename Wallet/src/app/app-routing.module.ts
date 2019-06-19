@@ -13,9 +13,10 @@ import { DetalleCuentaComponent } from './detalle-cuenta/detalle-cuenta.componen
 import { ReporteIngresosComponent } from './reporte-ingresos/reporte-ingresos.component';
 import { ReporteEgresosComponent } from './reporte-egresos/reporte-egresos.component';
 import { RegisterComponent } from './register/register.component';
+import { GraficaComponent } from './grafica/grafica.component';
 
 const routes: Routes = [
-{ path: "login", component: LoginComponent},
+{ path: "", component: LoginComponent},
 { path: "Home", component: HomePageComponent},
 { path: "Egreso", component: EgresosComponent},
 { path: "Ingreso", component: IngresosComponent},
@@ -27,7 +28,8 @@ const routes: Routes = [
 { path: "Cuenta/:id", component: DetalleCuentaComponent},
 { path: "Cuenta/ReporteIngreso/:id", component: ReporteIngresosComponent},
 { path: "Cuenta/ReporteEgreso/:id", component: ReporteEgresosComponent},
-{ path: "Registrar", component: RegisterComponent}
+{ path: "Registrar", component: RegisterComponent},
+{ path: "Cuenta/Grafica/:id", component: GraficaComponent}
 ];
 
 @NgModule({

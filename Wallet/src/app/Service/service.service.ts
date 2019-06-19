@@ -44,6 +44,11 @@ export class ServiceService {
     return this.httpClient.get(`${this.baseUrl}Ingresos?id=${accountId}&fi=${fi}&ff=${ff}`, { headers: new HttpHeaders().set('Authorization', 'Bearer '+ Token)});
   }
 
+  getGrafica(AccountId: number){
+    var Token = localStorage.getItem("Token");
+    return this.httpClient.get(`${this.baseUrl}Grafica?idAccount=${AccountId}`, { headers: new HttpHeaders().set('Authorization', 'Bearer '+ Token)})
+  }
+
   getEgresos(accountId: number){
     var Token = localStorage.getItem("Token");
     return this.httpClient.get(`${this.baseUrl}Ingresos?accountId=${accountId}`, { headers: new HttpHeaders().set('Authorization', 'Bearer '+ Token)});

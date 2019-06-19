@@ -1,0 +1,16 @@
+#opciones{
+    margin-top: 5%;
+    width: 100%;
+    height: 25%;
+    background-color: azure;
+    color: grey;
+}
+
+#opciones:hover{
+    background-color: lightblue;
+}
+
+.row{
+    margin-left: 20px;
+    margin-top: 3%;
+}
