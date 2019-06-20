@@ -14,26 +14,30 @@ import { ReporteIngresosComponent } from './reporte-ingresos/reporte-ingresos.co
 import { ReporteEgresosComponent } from './reporte-egresos/reporte-egresos.component';
 import { RegisterComponent } from './register/register.component';
 import { GraficaComponent } from './grafica/grafica.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-{ path: "", component: LoginComponent},
-{ path: "Home", component: HomePageComponent},
-{ path: "Egreso", component: EgresosComponent},
-{ path: "Ingreso", component: IngresosComponent},
-{ path: "Traslado", component: TrasladosComponent},
-{ path: "CrearCuenta", component: CrearCuentaComponent},
-{ path: "Perfil", component: PerfilComponent},
-{ path: "Perfil/EditarPerfil", component: EditarPerfilComponent},
-{ path: "Perfil/EditarPerfil/EditarContrasena", component: CambiarContrasenaComponent},
-{ path: "Cuenta/:id", component: DetalleCuentaComponent},
-{ path: "Cuenta/ReporteIngreso/:id", component: ReporteIngresosComponent},
-{ path: "Cuenta/ReporteEgreso/:id", component: ReporteEgresosComponent},
-{ path: "Registrar", component: RegisterComponent},
-{ path: "Cuenta/Grafica/:id", component: GraficaComponent}
+{ path: '', component: LoginComponent},
+{ path: 'Home', component: HomePageComponent, canActivate: [AuthGuard]},
+{ path: 'Egreso', component: EgresosComponent, canActivate: [AuthGuard]},
+{ path: 'Ingreso', component: IngresosComponent, canActivate: [AuthGuard]},
+{ path: 'Traslado', component: TrasladosComponent, canActivate: [AuthGuard]},
+{ path: 'CrearCuenta', component: CrearCuentaComponent, canActivate: [AuthGuard]},
+{ path: 'Perfil', component: PerfilComponent, canActivate: [AuthGuard]},
+{ path: 'Perfil/EditarPerfil', component: EditarPerfilComponent, canActivate: [AuthGuard]},
+{ path: 'Perfil/EditarPerfil/EditarContrasena', component: CambiarContrasenaComponent, canActivate: [AuthGuard]},
+{ path: 'Cuenta/:id', component: DetalleCuentaComponent, canActivate: [AuthGuard]},
+{ path: 'Cuenta/ReporteIngreso/:id', component: ReporteIngresosComponent, canActivate: [AuthGuard]},
+{ path: 'Cuenta/ReporteEgreso/:id', component: ReporteEgresosComponent, canActivate: [AuthGuard]},
+{ path: 'Registrar', component: RegisterComponent},
+{ path: 'Cuenta/Grafica/:id', component: GraficaComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes)
+  ],
+  exports:[RouterModule],
+  declarations: []
 })
 export class AppRoutingModule { }

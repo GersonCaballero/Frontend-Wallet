@@ -51,7 +51,7 @@ export class ServiceService {
 
   getEgresos(accountId: number){
     var Token = localStorage.getItem("Token");
-    return this.httpClient.get(`${this.baseUrl}Ingresos?accountId=${accountId}`, { headers: new HttpHeaders().set('Authorization', 'Bearer '+ Token)});
+    return this.httpClient.get(`${this.baseUrl}Egresos?accountId=${accountId}`, { headers: new HttpHeaders().set('Authorization', 'Bearer '+ Token)});
   }
 
   getEgresosFecha(accountId : number, fi : Date, ff : Date){
