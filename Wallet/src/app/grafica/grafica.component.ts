@@ -36,7 +36,6 @@ export class GraficaComponent implements OnInit {
     .subscribe((data: Array<Grafica>)=>{
       this.grafica = data;
       for(let i = 0; i < data.length; i++){
-        debugger
         this.barChartData[0].data.push(data[i].Ingreso);
         this.barChartData[1].data.push(data[i].Egreso);
         this.barChartLabels.push(data[i].Mes);

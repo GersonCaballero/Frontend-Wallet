@@ -21,6 +21,7 @@ import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
 import { CambiarContrasenaComponent } from './cambiar-contrasena/cambiar-contrasena.component';
 import { GraficaComponent } from './grafica/grafica.component'
 import { ChartsModule } from 'ng2-charts/fesm5/ng2-charts';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { ChartsModule } from 'ng2-charts/fesm5/ng2-charts';
     FormsModule,
     ChartsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

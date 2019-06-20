@@ -21,7 +21,7 @@ export class ReporteEgresosComponent implements OnInit {
   ngOnInit() {
     const AccountId : number = Number(+this.route.snapshot.paramMap.get('id'));
     this.id = AccountId;
-    this.service.getIngresos(AccountId)
+    this.service.getEgresos(AccountId)
     .subscribe((data: Array<Egreso>)=>{
       this.egresos = data;
       debugger
